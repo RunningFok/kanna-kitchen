@@ -12,7 +12,7 @@ export default function MenuItem({
   price: number;
 }) {
   return (
-    <div className="flex flex-col bg-neutral-100 rounded-lg tracking-wider font-bold text-zinc-400 mb-36 p-8 sm:w-44 lg:w-64 2xl:w-80 lg:gap-2 2xl:gap-5">
+    <div className="flex flex-col bg-neutral-100 rounded-lg tracking-wider font-bold text-zinc-500 mb-36 p-8 sm:w-44 lg:w-64 2xl:w-80 lg:gap-2 2xl:gap-5">
       <Image
         src={"/static/images/burger.jpg"}
         alt=""

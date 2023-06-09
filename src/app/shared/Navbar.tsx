@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { IonIcon } from "@ionic/react";
 import { menuSharp, closeSharp, callOutline } from "ionicons/icons";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import MenuItem from "./MenuItem";
 
@@ -16,6 +17,7 @@ interface Item {
 }
 
 export default function Navbar() {
+  const router = useRouter();
   let [openTab, setOpenTab] = useState(false);
   let [dropMenu, setDropMenu] = useState(false);
   let [category, setCategory] = useState("");
@@ -27,8 +29,14 @@ export default function Navbar() {
     setDropMenu(false);
   }
 
+  function homeButton() {
+    <Link href={"/"}>KANNA KITCHEN</Link>;
+    setOpenTab(false);
+  }
+
   async function displayItems(category: string) {
     setDropMenu(!dropMenu);
+    router.push("/");
     try {
       console.log("FETCHING DOCUMENTS");
       const fetchedItems = await fetch(`/api/${category}`, {
@@ -55,10 +63,10 @@ export default function Navbar() {
     { name: "飲品", category: "飲品" },
   ];
   return (
-    <section className="bg-[#EAE4E2] relative z-10">
-      <div className="flex flex-row sm:hidden items-center justify-between pr-5 pt-3 pb-1">
+    <header className="bg-[#EAE4E2] sticky top-0 z-10">
+      <nav className=" flex flex-row sm:hidden  items-center justify-between pr-5 pt-3 pb-1">
         <div className="ml-2 mb-2 text-2xl text-zinc-600 font-mono font-extrabold outline outline-offset-4 outline-2">
-          <Link href={"/"}>KANNA KITCHEN</Link>
+          <button onClick={() => homeButton()}>KANNA KITCHEN</button>
         </div>
 
         <div
@@ -77,17 +85,17 @@ export default function Navbar() {
           }`}
         >
           {Links.map((link) => (
-            <li key={link.name} className="text-xl my-5">
+            <li key={link.name} className="text-xl my-4">
               <button
                 onClick={() => setOpenTab(false)}
-                className="font-bold text-zinc-400 hover:text-sky-400 duration-500"
+                className="font-bold text-zinc-500 hover:text-sky-400 duration-500"
               >
                 <Link href={`/${link.category}`}>{link.name}</Link>
               </button>
             </li>
           ))}
         </ul>
-      </div>
+      </nav>
 
       <header className="hidden sm:block w-1/4 sm:w-full md:w-full">
         <nav className="flex items-center justify-center text-zinc-600">
@@ -100,7 +108,7 @@ export default function Navbar() {
                 <button
                   type="button"
                   onClick={() => displayItems(link.category)}
-                  className="	hs-dropdown-toggle font-bold text-zinc-400 hover:text-sky-400 duration-500"
+                  className="font-bold  text-zinc-500 hover:text-sky-400 hover:scale-110 duration-500"
                 >
                   {link.name}
                 </button>
@@ -136,6 +144,6 @@ export default function Navbar() {
           </div>
         </div>
       )}
-    </section>
+    </header>
   );
 }
