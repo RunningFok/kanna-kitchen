@@ -35,7 +35,7 @@ export default function categoryPage(context: any) {
   }, [getData]);
 
   return (
-    <div className="static flex flex-col py-10 gap-5 from-cyan-600 to-sky-600 bg-gradient-to-br items-center justify-center w-full h-full">
+    <div className="static flex flex-col py-10 gap-5 from-cyan-700 to-sky-700 bg-gradient-to-r items-center justify-center w-full h-full">
       <div className="flex flex-row text-xl text-neutral-200 tracking-wide">
         <IonIcon
           icon={callOutline}
