@@ -2,7 +2,6 @@
 import React, { useState } from "react";
 import { IonIcon } from "@ionic/react";
 import { menuSharp, closeSharp, callOutline } from "ionicons/icons";
-import { traditionalChinese } from "../font";
 import Link from "next/link";
 import MenuItem from "./MenuItem";
 
@@ -19,6 +18,7 @@ interface Item {
 export default function Navbar() {
   let [openTab, setOpenTab] = useState(false);
   let [dropMenu, setDropMenu] = useState(false);
+  let [category, setCategory] = useState("");
 
   const [itemList, setItemList] = useState<Array<Item>>([]);
 
@@ -35,6 +35,7 @@ export default function Navbar() {
         cache: "force-cache",
       }).then((response) => response.json());
       console.log("FETCHED DOCUMENTS");
+      setCategory(category);
       setItemList(fetchedItems);
       console.log("itemlist", itemList);
     } catch (error) {
@@ -43,7 +44,7 @@ export default function Navbar() {
   }
 
   let Links = [
-    { name: "早餐", category: "早餐" },
+    // { name: "早餐", category: "早餐" },
     { name: "冷食", category: "冷食" },
     { name: "定食", category: "定食" },
     { name: "丼物", category: "丼物" },
@@ -51,7 +52,7 @@ export default function Navbar() {
     { name: "烏冬", category: "烏冬" },
     { name: "焗物", category: "焗物" },
     { name: "特色", category: "特色" },
-    { name: "飲品", category: "飲品" },
+    // { name: "飲品", category: "飲品" },
   ];
   return (
     <section className="bg-[#EAE4E2] relative z-10">
@@ -101,9 +102,7 @@ export default function Navbar() {
                   onClick={() => displayItems(link.category)}
                   className="	hs-dropdown-toggle font-bold text-zinc-400 hover:text-sky-400 duration-500"
                 >
-                  {/* <h1 className={traditionalChinese.className}> */}
                   {link.name}
-                  {/* </h1> */}
                 </button>
               </li>
             ))}
@@ -113,7 +112,7 @@ export default function Navbar() {
 
       {dropMenu && (
         <div className="fixed bg-sky-700 z-20 flex flex-col h-full w-full items-center justify-center bg-opacity-90">
-          <div className="flex flex-row lg:text-2xl 2xl:text-4xl text-neutral-200 tracking-wide lg:pb-10 2xl:pb-20">
+          <div className="flex flex-row lg:text-2xl 2xl:text-4xl text-neutral-200 tracking-wide lg:pb-5 2xl:pb-10">
             <IonIcon
               icon={callOutline}
               size="medium"
@@ -122,7 +121,10 @@ export default function Navbar() {
             />
             6741 3905
           </div>
-          <div className="flex flex-row gap-24 ">
+          <div className="flex lg:text-4xl 2xl:text-7xl text-neutral-200 font-bold tracking-wide lg:pb-5 2xl:pb-20">
+            {category}
+          </div>
+          <div className="flex flex-row lg:gap-12 2xl:gap-24 ">
             {itemList.map((item) => (
               <MenuItem
                 alphabet={item.item_alphabet}
