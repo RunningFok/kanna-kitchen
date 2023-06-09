@@ -17,6 +17,7 @@ interface Item {
 
 export default function categoryPage(context: any) {
   const [itemList, setItemList] = useState<Array<Item>>([]);
+  const [categoryTitle, setCategoryTitle] = useState("");
   const { category } = context.params;
 
   async function getData() {
@@ -28,7 +29,6 @@ export default function categoryPage(context: any) {
   useEffect(() => {
     const fetchData = async () => {
       const response = await getData();
-
       setItemList(response);
     };
     fetchData();
@@ -36,9 +36,17 @@ export default function categoryPage(context: any) {
 
   return (
     <div className="static flex flex-col py-10 gap-5 from-cyan-700 to-sky-700 bg-gradient-to-r items-center justify-center w-full h-full">
-      <div className="flex flex- row text-xl text-neutral-200 tracking-wide">
-        <IonIcon icon={callOutline} size="medium" color="light" className="pt-1 px-1"/>
+      <div className="flex flex-row text-xl text-neutral-200 tracking-wide">
+        <IonIcon
+          icon={callOutline}
+          size="medium"
+          color="light"
+          className="pt-1 px-1"
+        />
         6741 3905
+      </div>
+      <div className="flex text-3xl text-neutral-200 font-bold tracking-wide pb-4 ">
+        {itemList?.[0]?.item_category}
       </div>
 
       {itemList.map((item) => (

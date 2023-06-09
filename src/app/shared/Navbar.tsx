@@ -44,7 +44,7 @@ export default function Navbar() {
   }
 
   let Links = [
-    // { name: "早餐", category: "早餐" },
+    { name: "早餐", category: "早餐" },
     { name: "冷食", category: "冷食" },
     { name: "定食", category: "定食" },
     { name: "丼物", category: "丼物" },
@@ -52,7 +52,7 @@ export default function Navbar() {
     { name: "烏冬", category: "烏冬" },
     { name: "焗物", category: "焗物" },
     { name: "特色", category: "特色" },
-    // { name: "飲品", category: "飲品" },
+    { name: "飲品", category: "飲品" },
   ];
   return (
     <section className="bg-[#EAE4E2] relative z-10">
