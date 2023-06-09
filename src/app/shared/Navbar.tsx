@@ -30,7 +30,7 @@ export default function Navbar() {
   }
 
   function homeButton() {
-    <Link href={"/"}>KANNA KITCHEN</Link>;
+    router.push("/");
     setOpenTab(false);
   }
 
