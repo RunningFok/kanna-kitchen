@@ -55,10 +55,11 @@ export default function Navbar() {
   ];
   return (
     <section className="bg-[#EAE4E2] relative z-10">
-      <div className="flex flex-row sm:hidden items-center justify-end pr-5 pt-3 sm:pt-10 md:pt-10 lg:pt-10 2xl:pt-20 ">
-        {/* <h1 className="text-4xl sm:text-7xl text-zinc-600 font-mono font-extrabold border-solid border-4 border-zinc-600">
-          KANNA KITCHEN
-        </h1> */}
+      <div className="flex flex-row sm:hidden items-center justify-between pr-5 pt-3 pb-1">
+        <div className="ml-2 mb-2 text-2xl text-zinc-600 font-mono font-extrabold outline outline-offset-4 outline-2">
+          <Link href={"/"}>KANNA KITCHEN</Link>
+        </div>
+
         <div
           onClick={() => openMenu()}
           className="right-8 top-6 cursor-pointer"
@@ -71,21 +72,16 @@ export default function Navbar() {
         </div>
         <ul
           className={`absolute flex flex-col items-center justify-end pb-12 bg-white z-[-1] left-0 w-full transition-all duration-400 ease-in ${
-            openTab ? "top-12 " : "top-[-800px]"
+            openTab ? "top-14 " : "top-[-800px]"
           }`}
         >
           {Links.map((link) => (
             <li key={link.name} className="text-xl my-5">
               <button
                 onClick={() => setOpenTab(false)}
-                className=" font-bold text-zinc-400 hover:text-sky-400 duration-500"
+                className="font-bold text-zinc-400 hover:text-sky-400 duration-500"
               >
-                <Link
-                  href={`/${link.category}`}
-                  // className={traditionalChinese.className}
-                >
-                  {link.name}
-                </Link>
+                <Link href={`/${link.category}`}>{link.name}</Link>
               </button>
             </li>
           ))}
