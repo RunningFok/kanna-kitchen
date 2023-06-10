@@ -32,6 +32,8 @@ export default function Navbar() {
   function homeButton() {
     router.push("/");
     setOpenTab(false);
+    setDropMenu(false)
+    
   }
 
   async function displayItems(category: string) {
