@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { IonIcon } from "@ionic/react";
 import { menuSharp, closeSharp, callOutline } from "ionicons/icons";
 import { useRouter } from "next/navigation";
+import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import MenuItem from "./MenuItem";
 
@@ -32,8 +33,7 @@ export default function Navbar() {
   function homeButton() {
     router.push("/");
     setOpenTab(false);
-    setDropMenu(false)
-    
+    setDropMenu(false);
   }
 
   async function displayItems(category: string) {
@@ -107,45 +107,64 @@ export default function Navbar() {
                 key={link.name}
                 className="px-1 py-3 sm:px-8 sm:py-3 md:px-12 md:py-10 sm:w-min list-none"
               >
-                <button
+                <motion.button
                   type="button"
                   onClick={() => displayItems(link.category)}
-                  className="font-bold  text-zinc-500 hover:text-sky-400 hover:scale-110 duration-500"
+                  className="font-bold  text-zinc-500 hover:text-sky-400"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
                 >
                   {link.name}
-                </button>
+                </motion.button>
               </li>
             ))}
           </div>
         </nav>
       </header>
 
-      {dropMenu && (
-        <div className="fixed bg-sky-700 z-20 flex flex-col h-full w-full items-center justify-center bg-opacity-90">
-          <div className="flex flex-row lg:text-2xl 2xl:text-4xl text-neutral-200 tracking-wide lg:pb-5 2xl:pb-10">
-            <IonIcon
-              icon={callOutline}
-              size="medium"
-              color="light"
-              className="pt-1 px-1"
-            />
-            6741 3905
-          </div>
-          <div className="flex lg:text-4xl 2xl:text-7xl text-neutral-200 font-bold tracking-wide lg:pb-5 2xl:pb-20">
-            {category}
-          </div>
-          <div className="flex flex-row lg:gap-12 2xl:gap-24 ">
-            {itemList.map((item) => (
-              <MenuItem
-                alphabet={item.item_alphabet}
-                name={item.item_name}
-                englishName={item.item_english}
-                price={item.item_price}
+      <AnimatePresence>
+        {dropMenu && (
+          <motion.div
+            key="categoryTab"
+            className="fixed bg-sky-700 z-20 flex flex-col h-full w-full items-center justify-center bg-opacity-90"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{
+              opacity: 0,
+              y: 20,
+              transition: { ease: "easeOut", duration: 0.3 },
+            }}
+          >
+            <div className="flex flex-row lg:text-2xl 2xl:text-4xl text-neutral-200 tracking-wide lg:pb-5 2xl:pb-10">
+              <IonIcon
+                icon={callOutline}
+                size="medium"
+                color="light"
+                className="pt-1 px-1"
               />
-            ))}
-          </div>
-        </div>
-      )}
+              6741 3905
+            </div>
+            <div className="flex lg:text-4xl 2xl:text-7xl text-neutral-200 font-bold tracking-wide lg:pb-5 2xl:pb-20">
+              {category}
+            </div>
+            <motion.div
+              className="flex flex-row lg:gap-12 2xl:gap-24"
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0, transition: { delay: 0.3 } }}
+              exit={{ opacity: 0, x: 20 }}
+            >
+              {itemList.map((item) => (
+                <MenuItem
+                  alphabet={item.item_alphabet}
+                  name={item.item_name}
+                  englishName={item.item_english}
+                  price={item.item_price}
+                />
+              ))}
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }
