@@ -4,12 +4,12 @@ import Image from "next/image";
 export default function MobileMenuItem({
   alphabet,
   name,
-  englishName,
+  imageURL,
   price,
 }: {
   alphabet: string;
   name: string;
-  englishName: string;
+  imageURL: string;
   price: number;
 }) {
   return (
@@ -20,7 +20,7 @@ export default function MobileMenuItem({
       exit={{ opacity: 0, x: 20 }}
     >
       <Image
-        src={"/static/images/burger.jpg"}
+        src={`/static/images/${imageURL}.jpg`}
         alt=""
         width={200}
         height={200}

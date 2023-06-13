@@ -9,7 +9,7 @@ import { PageWrapper } from "../shared/PageWrapper";
 interface Item {
   _id: string;
   item_alphabet: string;
-  item_note: number;
+  item_note: string;
   item_english: string;
   item_category: string;
   item_name: string;
@@ -18,7 +18,6 @@ interface Item {
 
 export default function categoryPage(context: any) {
   const [itemList, setItemList] = useState<Array<Item>>([]);
-  const [categoryTitle, setCategoryTitle] = useState("");
   const { category } = context.params;
 
   async function getData() {
@@ -55,7 +54,7 @@ export default function categoryPage(context: any) {
           <MobileMenuItem
             alphabet={item.item_alphabet}
             name={item.item_name}
-            englishName={item.item_english}
+            imageURL={item.item_note}
             price={item.item_price}
           />
         ))}

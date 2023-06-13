@@ -10,7 +10,7 @@ import MenuItem from "./MenuItem";
 interface Item {
   _id: string;
   item_alphabet: string;
-  item_note: number;
+  item_note: string;
   item_english: string;
   item_category: string;
   item_name: string;
@@ -47,6 +47,7 @@ export default function Navbar() {
       console.log("FETCHED DOCUMENTS");
       setCategory(category);
       setItemList(fetchedItems);
+      console.log(fetchedItems)
       console.log("itemlist", itemList);
     } catch (error) {
       console.log(error);
@@ -157,7 +158,7 @@ export default function Navbar() {
                 <MenuItem
                   alphabet={item.item_alphabet}
                   name={item.item_name}
-                  englishName={item.item_english}
+                  image={item.item_note}
                   price={item.item_price}
                 />
               ))}
