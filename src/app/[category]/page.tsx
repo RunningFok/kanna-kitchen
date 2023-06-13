@@ -54,7 +54,7 @@ export default function categoryPage(context: any) {
           <MobileMenuItem
             alphabet={item.item_alphabet}
             name={item.item_name}
-            imageURL={item.item_note}
+            image={item.item_note}
             price={item.item_price}
           />
         ))}

@@ -4,14 +4,17 @@ import Image from "next/image";
 export default function MobileMenuItem({
   alphabet,
   name,
-  imageURL,
+  image,
   price,
 }: {
   alphabet: string;
   name: string;
-  imageURL: string;
+  image: string;
   price: number;
 }) {
+
+  const imageURL = `/static/images/${image}.jpg`;
+
   return (
     <motion.div
       className="flex flex-col p-4 pb-2 bg-neutral-100 rounded-lg tracking-wider text-zinc-500 sm:hidden"
@@ -20,7 +23,7 @@ export default function MobileMenuItem({
       exit={{ opacity: 0, x: 20 }}
     >
       <Image
-        src={`/static/images/${imageURL}.jpg`}
+        src={imageURL}
         alt=""
         width={200}
         height={200}
