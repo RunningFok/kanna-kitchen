@@ -69,7 +69,7 @@ export default function Navbar() {
     <header className="bg-[#EAE4E2] sticky top-0 z-10">
       <nav className=" flex flex-row sm:hidden  items-center justify-between pr-5 pt-3 pb-1">
         <div className="ml-2 mb-2 text-2xl text-zinc-600 font-mono font-extrabold outline outline-offset-4 outline-2">
-          <button onClick={() => homeButton()}>KANNA KITCHEN</button>
+          <button onClick={() => homeButton()}>LEO KITCHEN</button>
         </div>
 
         <div

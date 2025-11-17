@@ -5,7 +5,7 @@ import Navbar from "./shared/Navbar";
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 export const metadata = {
-  title: "漢那廚房 || Kanna Kitchen ",
+  title: "Leo廚房 || Leo Kitchen ",
   description: "長洲日式餐廳 || Japanese Home Food in Cheung Chau",
 };
 
