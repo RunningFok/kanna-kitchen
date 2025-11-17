@@ -143,7 +143,7 @@ export default function Navbar() {
                 color="light"
                 className="pt-1 px-1"
               />
-              6741 3905
+              6741 3902
             </div>
             <div className="flex lg:text-4xl 2xl:text-7xl text-neutral-200 font-bold tracking-wide lg:pb-5 2xl:pb-20">
               {category}
